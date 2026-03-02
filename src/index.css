@@ -878,4 +878,11 @@ footer p {
   }
 }
 
-\n\n#portfolio .portfolio-grid {\n  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));\n}\n\n.google-btn:hover {\n  background: rgba(255, 255, 255, 0.15) !important;\n}\n
+
+#portfolio .portfolio-grid {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.google-btn:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
