@@ -55,10 +55,10 @@ const LoginModal = () => {
                 cursor: loading ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
                 transition: 'all 0.3s ease'
               }}
-              className="hover:bg-white/10"
+              className="google-btn"
             >
-              <i className="fab fa-google" style={{ color: '#ea4335' }}></i>
-              {loading ? 'Authenticating securely...' : 'Sign in with Google'}
+              <i className="fab fa-google" style={{ color: '#ea4335', display: 'flex', alignItems: 'center', marginTop: '2px' }}></i>
+              <span style={{ display: 'flex', alignItems: 'center' }}>{loading ? 'Authenticating securely...' : 'Sign in with Google'}</span>
             </button>
 
             <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '2rem' }}>
