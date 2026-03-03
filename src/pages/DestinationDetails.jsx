@@ -180,6 +180,13 @@ function DestinationDetails() {
             <p className="text-muted" style={{fontSize: '0.9rem', marginBottom: '1rem'}}>
               Select gear to rent for the duration of your trip. Cost reflects price per night.
             </p>
+
+            {nights > 0 && guests > 0 && (
+              <div className="fade-up" style={{ background: 'rgba(14, 165, 233, 0.1)', borderLeft: '4px solid var(--primary)', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', color: 'var(--text-main)', fontSize: '0.9rem' }}>
+                <strong style={{ display: 'block', marginBottom: '0.5rem', fontSize: '1rem' }}><i className="fas fa-magic" style={{ color: 'var(--primary)', marginRight: '8px' }}></i> AI Travel Recommendation</strong> 
+                For a <strong>{nights} night</strong> stay with <strong>{guests} guest(s)</strong>, our algorithm suggests adding <span style={{color: 'var(--primary)', fontWeight: 'bold'}}>{Math.ceil(guests/2)} Luxury Tent(s)</span> and <span style={{color: 'var(--primary)', fontWeight: 'bold'}}>{guests} Thermal Sleeping Bag(s)</span> to guarantee optimal comfort and safety.
+              </div>
+            )}
             
             <div style={{display: 'flex', flexDirection: 'column', gap: '0.8rem'}}>
               {gearAddons.map(addon => (
@@ -258,11 +265,11 @@ function DestinationDetails() {
                     padding: '0.8rem', color: 'var(--text-main)', marginTop: '5px'
                   }}
                 >
-                  <option value="1">1 Guest</option>
-                  <option value="2">2 Guests</option>
-                  <option value="3">3 Guests</option>
-                  <option value="4">4 Guests</option>
-                  <option value="5">5+ Guests</option>
+                  <option value="1" style={{background: '#0f172a', color: '#fff'}}>1 Guest</option>
+                  <option value="2" style={{background: '#0f172a', color: '#fff'}}>2 Guests</option>
+                  <option value="3" style={{background: '#0f172a', color: '#fff'}}>3 Guests</option>
+                  <option value="4" style={{background: '#0f172a', color: '#fff'}}>4 Guests</option>
+                  <option value="5" style={{background: '#0f172a', color: '#fff'}}>5+ Guests</option>
                 </select>
               </div>
 
@@ -298,6 +305,31 @@ function DestinationDetails() {
               <p className="text-center text-muted mt-3" style={{fontSize: '0.85rem'}}>Secure Razorpay transaction gateway.</p>
             </form>
           </div>
+        </div>
+      </div>
+
+      {/* Suggested Destinations */}
+      <div style={{ marginTop: '5rem', borderTop: '1px solid var(--card-border)', paddingTop: '3rem' }}>
+        <h3 style={{ fontSize: '1.8rem', marginBottom: '2rem' }}>More {destination.category.charAt(0).toUpperCase() + destination.category.slice(1)} Adventures</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}>
+          {destinationsData
+            .filter(d => d.category === destination.category && d.id !== destination.id)
+            .slice(0, 3)
+            .map((related) => (
+              <Link to={`/destination/${related.id}`} key={related.id} className="glass-card fade-up" style={{ color: 'inherit', textDecoration: 'none', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+                <div style={{ position: 'relative', height: '200px', width: '100%', borderRadius: '12px', overflow: 'hidden' }}>
+                  <img src={related.img} alt={related.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <span style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(0,0,0,0.6)', padding: '5px 10px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold' }}><i className="fas fa-star" style={{color: '#fbbf24'}}></i> 4.9</span>
+                </div>
+                <div style={{ padding: '1.5rem 1rem 0.5rem' }}>
+                  <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>{related.title}</h4>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{related.category.charAt(0).toUpperCase() + related.category.slice(1)} Explorer</span>
+                    <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>₹{related.price.toLocaleString('en-IN')}<span style={{fontSize:'0.8em', color:'var(--text-muted)', fontWeight:'normal'}}>/night</span></span>
+                  </div>
+                </div>
+              </Link>
+            ))}
         </div>
       </div>
     </motion.section>
