@@ -150,8 +150,8 @@ const LoginModal = () => {
 
             {/* Tabs */}
             <div style={{ display: 'flex', gap: '6px', background: 'rgba(0,0,0,0.2)', padding: '5px', borderRadius: '10px', marginBottom: '1.5rem' }}>
-              <button style={tabStyle(tab === 'signin')} onClick={() => setTab('signin')}>Sign In</button>
-              <button style={tabStyle(tab === 'signup')} onClick={() => setTab('signup')}>Create Account</button>
+              <button type="button" style={tabStyle(tab === 'signin')} onClick={() => setTab('signin')}>Sign In</button>
+              <button type="button" style={tabStyle(tab === 'signup')} onClick={() => setTab('signup')}>Create Account</button>
             </div>
 
             <AnimatePresence mode="wait">
@@ -185,6 +185,7 @@ const LoginModal = () => {
 
             {/* Google Button */}
             <button
+              type="button"
               onClick={handleGoogle}
               disabled={loading}
               className="google-btn"
