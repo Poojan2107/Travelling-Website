@@ -61,6 +61,46 @@ export const destinationsData = [
     price: 3000,
     lat: 26.9157,
     lng: 70.9083
+  },
+  { 
+    id: 7,
+    img: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=800&auto=format&fit=crop&q=80', 
+    title: 'Auli Snow Expedition', 
+    desc: 'Brave the winter cold and enjoy world-class skiing on pristine Himalayan snow slopes.',
+    category: 'mountain',
+    price: 8500,
+    lat: 30.5332,
+    lng: 79.5663
+  },
+  { 
+    id: 8,
+    img: 'https://images.unsplash.com/photo-1540206395-68808572332f?w=800&auto=format&fit=crop&q=80', 
+    title: 'Spiti Valley Motor Camp', 
+    desc: 'A rugged high-altitude desert adventure designed for off-road overlanding vehicles.',
+    category: 'desert',
+    price: 6500,
+    lat: 32.2215,
+    lng: 78.0336
+  },
+  { 
+    id: 9,
+    img: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=800&auto=format&fit=crop&q=80', 
+    title: 'Andaman Scuba Retreat', 
+    desc: 'Explore vibrant coral reefs and camp on secluded white-sand island beaches.',
+    category: 'beach',
+    price: 12000,
+    lat: 11.7587,
+    lng: 92.6560
+  },
+  { 
+    id: 10,
+    img: 'https://images.unsplash.com/photo-1506501139174-099022df5260?w=800&auto=format&fit=crop&q=80', 
+    title: 'Munnar Tea Estate', 
+    desc: 'Set up camp inside lush green spice and tea plantations in the misty hills of Kerala.',
+    category: 'forest',
+    price: 4500,
+    lat: 10.0889,
+    lng: 77.0595
   }
 ];
 
