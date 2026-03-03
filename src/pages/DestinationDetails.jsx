@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import { destinationsData } from '../components/Destinations';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -85,6 +86,9 @@ function DestinationDetails() {
       toast.error("Please select valid check-in and check-out dates.", { position: "top-center" });
       return;
     }
+
+    const cleaningFee = 1000;
+    const finalAmount = totalPrice + cleaningFee;
 
     toast.info("Processing your booking...", { position: "top-center", autoClose: 1000 });
     
