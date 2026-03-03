@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -10,6 +11,7 @@ import ServiceDetails from './pages/ServiceDetails';
 import Success from './pages/Success';
 import MyBookings from './pages/MyBookings';
 import LoginModal from './components/LoginModal';
+import CartDrawer from './components/CartDrawer';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -30,13 +32,16 @@ function AnimatedRoutes() {
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <div className="blob-bg"></div>
-        <Navbar />
-        <LoginModal />
-        <AnimatedRoutes />
-        <Footer />
-      </Router>
+      <CartProvider>
+        <Router>
+          <div className="blob-bg"></div>
+          <Navbar />
+          <LoginModal />
+          <CartDrawer />
+          <AnimatedRoutes />
+          <Footer />
+        </Router>
+      </CartProvider>
     </AuthProvider>
   );
 }

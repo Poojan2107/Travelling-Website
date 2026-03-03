@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { servicesData } from '../components/Services';
+import { useCart } from '../context/CartContext';
 
 const servicePackages = {
   'tents': [
@@ -34,6 +35,7 @@ const servicePackages = {
 function ServiceDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const service = servicesData.find(s => s.id === id);
   const packages = servicePackages[id] || [];
 
@@ -95,7 +97,11 @@ function ServiceDetails() {
               <span style={{ fontSize: '1.3rem', fontWeight: 'bold', color: 'var(--text-main)' }}>
                 ₹{pkg.price}/day
               </span>
-              <button className="btn btn-outline" style={{ padding: '8px 16px' }} onClick={() => { alert('Added to rental cart!'); navigate(-1); }}>
+              <button 
+                className="btn btn-outline" 
+                style={{ padding: '8px 16px' }} 
+                onClick={() => addToCart(pkg)}
+              >
                 Add to Cart
               </button>
             </div>

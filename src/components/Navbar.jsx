@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
 import { motion } from 'framer-motion';
 
 function Navbar() {
@@ -9,6 +10,7 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, openLoginModal, logout } = useAuth();
+  const { cartCount, toggleCart } = useCart();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
@@ -88,7 +90,25 @@ function Navbar() {
             </Link>
           </li>
           
-          <li style={{ marginLeft: '1rem' }}>
+          <li style={{ marginLeft: '1rem', position: 'relative' }}>
+            <button 
+              onClick={toggleCart}
+              style={{ background: 'transparent', border: 'none', color: 'var(--text-main)', fontSize: '1.2rem', cursor: 'pointer', padding: '8px' }}
+            >
+              <i className="fas fa-shopping-cart"></i>
+              {cartCount > 0 && (
+                <span style={{
+                  position: 'absolute', top: 0, right: 0, background: 'var(--accent)', color: 'var(--bg-color)',
+                  fontSize: '0.7rem', fontWeight: 'bold', width: '20px', height: '20px',
+                  borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}>
+                  {cartCount}
+                </span>
+              )}
+            </button>
+          </li>
+          
+          <li style={{ marginLeft: '0.5rem' }}>
             {!user ? (
               <button 
                 onClick={() => { setMenuActive(false); openLoginModal(); }}
