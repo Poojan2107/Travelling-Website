@@ -289,6 +289,162 @@ export const destinationsData = [
     lng: 75.8069,
     activities: ["Outdoor BBQ & Grilling","Campfire Storytelling","Local Area Cycling"],
     itinerary: ["Day 1: RV Hookup & Local Market","Day 2: Scenic Drive & Picnic","Day 3: Community Bonfire"]
+  },
+
+  // ── 2 extra Mountain ──
+  { 
+    id: 25,
+    img: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&auto=format&fit=crop&q=80', 
+    title: 'Kedarnath Base Trek', 
+    desc: 'Follow ancient pilgrimage paths through dramatic gorges and alpine meadows toward the holy shrine.',
+    category: 'mountain',
+    price: 5500,
+    lat: 30.7352,
+    lng: 79.0669,
+    activities: ["High Altitude River Crossing","Pilgrimage Trail Walk","Mountain Photography"],
+    itinerary: ["Day 1: Gaurikund Arrival & Rest","Day 2: Base Camp Ascent","Day 3: Shrine Visit & Descent"]
+  },
+  { 
+    id: 26,
+    img: 'https://images.unsplash.com/photo-1495908333425-29a1e0918c5f?w=800&auto=format&fit=crop&q=80', 
+    title: 'Rohtang Pass Snow Camp', 
+    desc: 'Camp at 3,978m above sea level on snow-covered terrain with panoramic views of three major ranges.',
+    category: 'mountain',
+    price: 7000,
+    lat: 32.3712,
+    lng: 77.2446,
+    activities: ["Snow Trekking","Skiing & Snowboarding","Ice Cave Exploration"],
+    itinerary: ["Day 1: Manali Pickup & Acclimatize","Day 2: Snow Trek & Skiing","Day 3: Summit Views & Return"]
+  },
+
+  // ── 2 extra Lake ──
+  { 
+    id: 27,
+    img: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&auto=format&fit=crop&q=80', 
+    title: 'Lonar Crater Lake', 
+    desc: 'Camp beside India\'s only meteor impact crater lake with its otherworldly jade-green waters.',
+    category: 'lake',
+    price: 3000,
+    lat: 19.9830,
+    lng: 76.5081,
+    activities: ["Crater Rim Trek","Bird Watching","Geology Workshops"],
+    itinerary: ["Day 1: Crater Arrival & Rim Walk","Day 2: Lake Kayak & Birdwatch","Day 3: Temple Visit & Departure"]
+  },
+  { 
+    id: 28,
+    img: 'https://images.unsplash.com/photo-1444464666168-49d633b86797?w=800&auto=format&fit=crop&q=80', 
+    title: 'Chilika Lake Delta Camp', 
+    desc: 'Spot migratory flamingos and rare Irrawaddy dolphins in Asia\'s largest brackish water lagoon.',
+    category: 'lake',
+    price: 4500,
+    lat: 19.7218,
+    lng: 85.3187,
+    activities: ["Dolphin Spotting Boat Ride","Flamingo Bird Trail","Sunrise Fishing"],
+    itinerary: ["Day 1: Boat Arrival & Camp Setup","Day 2: Dolphin Cruise & Birdwatch","Day 3: Island Picnic & Departure"]
+  },
+
+  // ── 2 extra Beach ──
+  { 
+    id: 29,
+    img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80', 
+    title: 'Radhanagar Beach Havelock', 
+    desc: 'Camp on Asia\'s finest beach — powder white sands, transparent turquoise water and absolute silence.',
+    category: 'beach',
+    price: 8500,
+    lat: 11.9770,
+    lng: 92.9530,
+    activities: ["Glass-Bottom Kayaking","Jungle Beach Trail","Night Turtle Watch"],
+    itinerary: ["Day 1: Ferry Arrival & Sunset Camp","Day 2: Kayak & Snorkel Session","Day 3: Turtle Nesting Walk"]
+  },
+  { 
+    id: 30,
+    img: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&auto=format&fit=crop&q=80', 
+    title: 'Tarkarli Scuba Beach', 
+    desc: 'Dive into crystal clear shallow waters and explore coral gardens off the Konkan coast.',
+    category: 'beach',
+    price: 4500,
+    lat: 16.0185,
+    lng: 73.4678,
+    activities: ["PADI Scuba Diving","Glass-Bottom Boat Ride","Beachside Bonfire"],
+    itinerary: ["Day 1: Arrival & Water Intro","Day 2: Scuba Certification Dive","Day 3: Snorkel & Local Cuisine"]
+  },
+
+  // ── 2 extra Forest ──
+  { 
+    id: 31,
+    img: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&auto=format&fit=crop&q=80', 
+    title: 'Sundarbans Mangrove Trek', 
+    desc: 'Navigate through the world\'s largest mangrove forest by boat while spotting Bengal tigers.',
+    category: 'forest',
+    price: 7500,
+    lat: 21.9497,
+    lng: 89.1833,
+    activities: ["Tiger Watch Boat Safari","Mangrove Canopy Walk","Fishing with Locals"],
+    itinerary: ["Day 1: Kolkata to Boat Camp","Day 2: Tiger Territory Safari","Day 3: Mangrove Walk & Return"]
+  },
+  { 
+    id: 32,
+    img: 'https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&auto=format&fit=crop&q=80', 
+    title: 'Bandipur Forest Lodge', 
+    desc: 'Stay in eco-friendly forest lodges inside one of India\'s premier tiger and elephant reserves.',
+    category: 'forest',
+    price: 6000,
+    lat: 11.6557,
+    lng: 76.6345,
+    activities: ["Jeep Safari","Elephant Interaction","Night Jungle Walk"],
+    itinerary: ["Day 1: Lodge Check-in & Safari","Day 2: Elephant Camp Visit","Day 3: Bird Walk & Departure"]
+  },
+
+  // ── 2 extra Desert ──
+  { 
+    id: 33,
+    img: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&auto=format&fit=crop&q=80', 
+    title: 'Thar Desert Luxury Camp', 
+    desc: 'Spend a night in royal Rajasthani-style tents with folk dance, music and authentic cuisine.',
+    category: 'desert',
+    price: 6000,
+    lat: 27.0238,
+    lng: 70.3673,
+    activities: ["Royal Camel Procession","Rajasthani Folk Night","Sand Art Workshop"],
+    itinerary: ["Day 1: Jaisalmer Pickup & Welcome","Day 2: Camel Safari & Cultural Night","Day 3: Sunrise Dune Walk"]
+  },
+  { 
+    id: 34,
+    img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80', 
+    title: 'Leh Ladakh Desert Route', 
+    desc: 'Cross the world\'s highest motorable passes through a dramatic cold desert moonscape.',
+    category: 'desert',
+    price: 9500,
+    lat: 34.1526,
+    lng: 77.5771,
+    activities: ["Motorbike Expedition","Pangong Lake Visit","Magnetic Hill Experience"],
+    itinerary: ["Day 1: Leh Acclimatize","Day 2: Khardung La Pass Ride","Day 3: Pangong Sunrise Camp"]
+  },
+
+  // ── 2 extra RV Spot ──
+  { 
+    id: 35,
+    img: 'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=800&auto=format&fit=crop&q=80', 
+    title: 'Lonavala Valley RV Park', 
+    desc: 'Park your home on wheels at a scenic hilltop with panoramic views of the Western Ghats.',
+    category: 'rv',
+    price: 3500,
+    lat: 18.7546,
+    lng: 73.4062,
+    activities: ["Waterfall Hike","Valley Cycling Tour","Evening Bonfire"],
+    itinerary: ["Day 1: Setup & Sunset Views","Day 2: Bhushi Dam Walk & Waterfall","Day 3: Ghats Drive & Depart"]
+  },
+  { 
+    id: 36,
+    img: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&auto=format&fit=crop&q=80', 
+    title: 'Kodaikanal RV Meadows', 
+    desc: 'Park at 2,133m in lush green meadows with mild weather, pine forests and star-filled nights.',
+    category: 'rv',
+    price: 4200,
+    lat: 10.2381,
+    lng: 77.4892,
+    activities: ["Horse Riding","Boat Club Visit","Pine Forest Walk"],
+    itinerary: ["Day 1: Setup & Lake Walk","Day 2: Horse Ride & Pine Trek","Day 3: Dolphin Nose Viewpoint"]
   }
 ];
 
