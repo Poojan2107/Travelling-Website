@@ -3,6 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 
+const formatDate = (isoString) => {
+  if (!isoString) return 'N/A';
+  const d = new Date(isoString);
+  const day   = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year  = d.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
 function MyBookings() {
   const [bookings, setBookings] = useState([]);
   const [activeTab, setActiveTab] = useState('bookings');
@@ -114,11 +123,11 @@ function MyBookings() {
                           <span style={{ background: 'rgba(45, 212, 191, 0.2)', color: 'var(--accent)', padding: '5px 12px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 'bold' }}>Confirmed</span>
                         </div>
                         <div style={{ display: 'flex', gap: '1.5rem', color: 'var(--text-muted)', margin: '0.8rem 0' }}>
-                          <span><i className="far fa-calendar-alt"></i> {new Date(booking.checkIn).toLocaleDateString()} - {new Date(booking.checkOut).toLocaleDateString()}</span>
+                          <span><i className="far fa-calendar-alt"></i> {formatDate(booking.checkIn)} — {formatDate(booking.checkOut)}</span>
                           <span><i className="fas fa-users"></i> {booking.guests} Guest(s)</span>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--card-border)', paddingTop: '1rem', mt: '1rem' }}>
-                          <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Booked: {new Date(booking.bookingDate).toLocaleDateString()}</span>
+                          <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Booked: {formatDate(booking.bookingDate)}</span>
                           <strong style={{ color: 'var(--primary)', fontSize: '1.3rem' }}>₹{booking.totalPrice.toLocaleString('en-IN')}</strong>
                         </div>
                       </div>
