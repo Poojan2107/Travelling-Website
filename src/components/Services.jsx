@@ -18,7 +18,7 @@ function Services() {
         <h2>Premium Camping Gear</h2>
       </div>
       <div className="cards-grid">
-        {servicesData.map((service, index) => (
+        {servicesData.map((service) => (
           <Link to={`/service/${service.id}`} key={service.id} style={{ textDecoration: 'none', color: 'var(--text-main)' }}>
             <div className="glass-card service-card">
               <div className="card-icon"><i className={`fas ${service.icon}`}></i></div>

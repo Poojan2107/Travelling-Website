@@ -16,30 +16,39 @@ const getNights = (checkIn, checkOut) => {
   return Math.round((new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24));
 };
 
+const COLORS = ['#0ea5e9', '#22c55e', '#f59e0b', '#ec4899', '#a855f7'];
+
+/* Pre-generate particle data outside render to keep component pure */
+const PARTICLES = Array.from({ length: 40 }, () => ({
+  x: Math.random() * window.innerWidth,
+  rotateEnd: Math.random() * 720 - 360,
+  duration: 2.5 + Math.random() * 2,
+  delay: Math.random() * 1.5,
+  size: 6 + Math.random() * 8,
+  isCircle: Math.random() > 0.5,
+  color: COLORS[Math.floor(Math.random() * COLORS.length)],
+}));
+
 /* Confetti particle animation */
-const Confetti = () => {
-  const colors = ['#0ea5e9', '#22c55e', '#f59e0b', '#ec4899', '#a855f7'];
-  const pieces = Array.from({ length: 40 });
-  return (
-    <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
-      {pieces.map((_, i) => (
-        <motion.div
-          key={i}
-          initial={{ y: -20, x: Math.random() * window.innerWidth, opacity: 1, rotate: 0 }}
-          animate={{ y: window.innerHeight + 20, opacity: [1, 1, 0], rotate: Math.random() * 720 - 360 }}
-          transition={{ duration: 2.5 + Math.random() * 2, delay: Math.random() * 1.5, ease: 'linear' }}
-          style={{
-            position: 'absolute',
-            width: `${6 + Math.random() * 8}px`,
-            height: `${6 + Math.random() * 8}px`,
-            borderRadius: Math.random() > 0.5 ? '50%' : '2px',
-            background: colors[Math.floor(Math.random() * colors.length)],
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+const Confetti = () => (
+  <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
+    {PARTICLES.map((p, i) => (
+      <motion.div
+        key={i}
+        initial={{ y: -20, x: p.x, opacity: 1, rotate: 0 }}
+        animate={{ y: window.innerHeight + 20, opacity: [1, 1, 0], rotate: p.rotateEnd }}
+        transition={{ duration: p.duration, delay: p.delay, ease: 'linear' }}
+        style={{
+          position: 'absolute',
+          width: `${p.size}px`,
+          height: `${p.size}px`,
+          borderRadius: p.isCircle ? '50%' : '2px',
+          background: p.color,
+        }}
+      />
+    ))}
+  </div>
+);
 
 function Success() {
   const location = useLocation();
