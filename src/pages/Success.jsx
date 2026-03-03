@@ -4,9 +4,11 @@ import { motion } from 'framer-motion';
 
 const formatDate = (isoString) => {
   if (!isoString) return 'N/A';
-  return new Date(isoString).toLocaleDateString('en-IN', {
-    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-  });
+  const d = new Date(isoString);
+  const day   = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year  = d.getFullYear();
+  return `${day}/${month}/${year}`;
 };
 
 const getNights = (checkIn, checkOut) => {
@@ -219,7 +221,7 @@ function Success() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {[
               { icon: 'fa-suitcase', color: '#22c55e', text: 'Start packing based on the gear recommendations in your booking.' },
-              { icon: 'fa-map-marked-alt', color: '#0ea5e9', text: 'Explore your destination's itinerary from the destination page.' },
+              { icon: 'fa-map-marked-alt', color: '#0ea5e9', text: "Explore your destination's itinerary from the destination page." },
               { icon: 'fa-ticket-alt', color: '#f59e0b', text: 'Check your full trip details anytime in My Dashboard.' },
             ].map((item, idx) => (
               <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
