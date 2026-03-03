@@ -82,7 +82,7 @@ function DestinationDetails() {
   const handleBooking = (e) => {
     e.preventDefault();
     if (!checkIn || !checkOut || nights <= 0) {
-      alert("Please select valid check-in and check-out dates.");
+      toast.error("Please select valid check-in and check-out dates.", { position: "top-center" });
       return;
     }
 
@@ -113,8 +113,11 @@ function DestinationDetails() {
 
         const existingBookings = JSON.parse(localStorage.getItem('travelBookings')) || [];
         localStorage.setItem('travelBookings', JSON.stringify([...existingBookings, newBooking]));
-
-        navigate('/checkout-success', { state: { booking: newBooking } });
+        
+        toast.success("Payment successful! Redirecting...", { position: "bottom-right" });
+        setTimeout(() => {
+          navigate('/checkout-success', { state: { booking: newBooking } });
+        }, 1500);
       },
       prefill: {
         name: "Test User",
@@ -130,7 +133,7 @@ function DestinationDetails() {
       const rzp1 = new window.Razorpay(options);
       rzp1.open();
     } else {
-      alert("Razorpay SDK failed to load. Are you offline?");
+      toast.error("Razorpay SDK failed to load. Are you offline?", { position: "top-center" });
     }
   };
 

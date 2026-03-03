@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AnimatePresence } from 'framer-motion';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -35,6 +37,7 @@ function App() {
       <CartProvider>
         <Router>
           <div className="blob-bg"></div>
+          <ToastContainer position="bottom-right" theme="dark" />
           <Navbar />
           <LoginModal />
           <CartDrawer />
