@@ -242,7 +242,8 @@ function DestinationDetails() {
                     startDate={checkIn}
                     endDate={checkOut}
                     minDate={new Date()}
-                    placeholderText="Select date"
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="DD/MM/YYYY"
                     className="form-control"
                     wrapperClassName="date-picker-wrapper"
                     required
@@ -257,7 +258,8 @@ function DestinationDetails() {
                     startDate={checkIn}
                     endDate={checkOut}
                     minDate={checkIn || new Date()}
-                    placeholderText="Select date"
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="DD/MM/YYYY"
                     className="form-control"
                     wrapperClassName="date-picker-wrapper"
                     required
