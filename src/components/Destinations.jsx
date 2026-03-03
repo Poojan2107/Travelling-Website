@@ -352,9 +352,9 @@ function Destinations() {
               onChange={(e) => setSortOption(e.target.value)}
               style={{ background: 'transparent', border: 'none', color: 'var(--text-main)', outline: 'none', cursor: 'pointer' }}
             >
-              <option value="recommended">Recommended</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
+              <option value="recommended" style={{background: '#0f172a', color: '#fff'}}>Recommended</option>
+              <option value="price-low" style={{background: '#0f172a', color: '#fff'}}>Price: Low to High</option>
+              <option value="price-high" style={{background: '#0f172a', color: '#fff'}}>Price: High to Low</option>
             </select>
           </div>
         </div>
