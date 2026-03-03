@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { destinationsData } from '../components/Destinations';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import L from 'leaflet';
 
 // Fix for default Leaflet marker icons not showing in React setup
@@ -25,8 +27,8 @@ function DestinationDetails() {
   const navigate = useNavigate();
   const destination = destinationsData.find(d => d.id === parseInt(id));
 
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
+  const [checkIn, setCheckIn] = useState(null);
+  const [checkOut, setCheckOut] = useState(null);
   const [guests, setGuests] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [nights, setNights] = useState(0);
@@ -38,9 +40,7 @@ function DestinationDetails() {
 
   useEffect(() => {
     if (checkIn && checkOut) {
-      const inDate = new Date(checkIn);
-      const outDate = new Date(checkOut);
-      const diffTime = outDate - inDate;
+      const diffTime = checkOut.getTime() - checkIn.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
       
       if (diffDays > 0) {
@@ -104,8 +104,8 @@ function DestinationDetails() {
           destinationId: destination.id,
           destinationTitle: destination.title,
           destinationImg: destination.img,
-          checkIn,
-          checkOut,
+          checkIn: checkIn.toISOString(),
+          checkOut: checkOut.toISOString(),
           guests,
           totalPrice: finalAmount,
           bookingDate: new Date().toISOString()
@@ -214,26 +214,35 @@ function DestinationDetails() {
             <h3><span className="price">₹{destination.price.toLocaleString('en-IN')}</span> / night</h3>
             
             <form onSubmit={handleBooking} className="mt-4">
-              <div className="date-picker-group">
-                <div className="input-group mb-0">
+              <div className="date-picker-group" style={{ display: 'flex', gap: '10px' }}>
+                <div className="input-group mb-0" style={{ flex: 1 }}>
                   <label style={{position: 'static', fontSize: '0.85rem'}}>Check-in</label>
-                  <input 
-                    type="date" 
-                    required 
-                    value={checkIn}
-                    onChange={(e) => setCheckIn(e.target.value)}
-                    style={{padding: '0.8rem', colorScheme: 'dark'}}
+                  <DatePicker 
+                    selected={checkIn}
+                    onChange={(date) => setCheckIn(date)}
+                    selectsStart
+                    startDate={checkIn}
+                    endDate={checkOut}
+                    minDate={new Date()}
+                    placeholderText="Select date"
+                    className="form-control"
+                    wrapperClassName="date-picker-wrapper"
+                    required
                   />
                 </div>
-                <div className="input-group mb-0">
+                <div className="input-group mb-0" style={{ flex: 1 }}>
                   <label style={{position: 'static', fontSize: '0.85rem'}}>Check-out</label>
-                  <input 
-                    type="date" 
-                    required 
-                    value={checkOut}
-                    onChange={(e) => setCheckOut(e.target.value)}
-                    min={checkIn}
-                    style={{padding: '0.8rem', colorScheme: 'dark'}}
+                  <DatePicker 
+                    selected={checkOut}
+                    onChange={(date) => setCheckOut(date)}
+                    selectsEnd
+                    startDate={checkIn}
+                    endDate={checkOut}
+                    minDate={checkIn || new Date()}
+                    placeholderText="Select date"
+                    className="form-control"
+                    wrapperClassName="date-picker-wrapper"
+                    required
                   />
                 </div>
               </div>

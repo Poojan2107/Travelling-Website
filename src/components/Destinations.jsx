@@ -101,6 +101,146 @@ export const destinationsData = [
     price: 4500,
     lat: 10.0889,
     lng: 77.0595
+  },
+  { 
+    id: 11,
+    img: 'https://images.unsplash.com/photo-1580213159263-8a9d18b5bdeb?w=800&auto=format&fit=crop&q=80', 
+    title: 'Gulmarg Ski Resort', 
+    desc: 'Stay warm in alpine huts overlooking the pristine snow-covered valleys of Kashmir.',
+    category: 'mountain',
+    price: 8000,
+    lat: 34.0484,
+    lng: 74.3805
+  },
+  { 
+    id: 12,
+    img: 'https://images.unsplash.com/photo-1542352875-a0db130c25a5?w=800&auto=format&fit=crop&q=80', 
+    title: 'Tawang Monastery Trek', 
+    desc: 'Wander through spiritual trails and experience raw mountain culture in Arunachal Pradesh.',
+    category: 'mountain',
+    price: 4500,
+    lat: 27.5861,
+    lng: 91.8596
+  },
+  { 
+    id: 13,
+    img: 'https://images.unsplash.com/photo-1629853381655-b4fed7b5fc75?w=800&auto=format&fit=crop&q=80', 
+    title: 'Dal Lake Houseboats', 
+    desc: 'Float peacefully in luxury wooden shikaras over the mirrored waters of Srinagar.',
+    category: 'lake',
+    price: 7000,
+    lat: 34.1086,
+    lng: 74.8672
+  },
+  { 
+    id: 14,
+    img: 'https://images.unsplash.com/photo-1533590520698-c6f370cedd1c?w=800&auto=format&fit=crop&q=80', 
+    title: 'Nainital Lakeside Camp', 
+    desc: 'Enjoy a cool evening breeze sitting right at the edge of the emerald green Naini Lake.',
+    category: 'lake',
+    price: 3500,
+    lat: 29.3803,
+    lng: 79.4636
+  },
+  { 
+    id: 15,
+    img: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?w=800&auto=format&fit=crop&q=80', 
+    title: 'Tsomgo Lake Sikkim', 
+    desc: 'Witness a majestic glowing glacial lake surrounded by steep, rugged Himalayan cliffs.',
+    category: 'lake',
+    price: 6000,
+    lat: 27.3742,
+    lng: 88.7618
+  },
+  { 
+    id: 16,
+    img: 'https://images.unsplash.com/photo-1583000574044-f87eeb883b2a?w=800&auto=format&fit=crop&q=80', 
+    title: 'Varkala Cliffs Beach', 
+    desc: 'Camp safely high above the Arabian sea on gorgeous red laterite cliff-sides in Kerala.',
+    category: 'beach',
+    price: 3500,
+    lat: 8.7378,
+    lng: 76.7163
+  },
+  { 
+    id: 17,
+    img: 'https://plus.unsplash.com/premium_photo-1669830500171-f9261fc9defb?w=800&auto=format&fit=crop&q=80', 
+    title: 'Palolem Beach Goa', 
+    desc: 'Kick back in colorful beach huts under gently swaying palms away from the city noise.',
+    category: 'beach',
+    price: 4000,
+    lat: 15.0100,
+    lng: 74.0233
+  },
+  { 
+    id: 18,
+    img: 'https://images.unsplash.com/photo-1628189675276-8051752dfbfb?w=800&auto=format&fit=crop&q=80', 
+    title: 'Kaziranga Safari Park', 
+    desc: 'Wake up to the roars of the wild and spot the majestic one-horned rhinoceros in Assam.',
+    category: 'forest',
+    price: 5500,
+    lat: 26.5775,
+    lng: 93.1711
+  },
+  { 
+    id: 19,
+    img: 'https://images.unsplash.com/photo-1601224855325-a1fc57731998?w=800&auto=format&fit=crop&q=80', 
+    title: 'Wayanad Treehouse', 
+    desc: 'Sleep high in the canopy among singing birds in eco-friendly luxury treehouses.',
+    category: 'forest',
+    price: 6500,
+    lat: 11.6854,
+    lng: 76.1320
+  },
+  { 
+    id: 20,
+    img: 'https://plus.unsplash.com/premium_photo-1666878161556-3decc8b9fbd8?w=800&auto=format&fit=crop&q=80', 
+    title: 'Rann of Kutch Salt Flats', 
+    desc: 'Camp under massive starlit skies on seemingly endless horizons of pure white salt.',
+    category: 'desert',
+    price: 5000,
+    lat: 23.8315,
+    lng: 69.8322
+  },
+  { 
+    id: 21,
+    img: 'https://images.unsplash.com/photo-1549416801-7d1ae34e3415?w=800&auto=format&fit=crop&q=80', 
+    title: 'Nubra Valley Dunes', 
+    desc: 'Explore cold-desert sand dunes riding Bactrian camels amidst high snow-capped peaks.',
+    category: 'desert',
+    price: 4500,
+    lat: 34.6865,
+    lng: 77.5583
+  },
+  { 
+    id: 22,
+    img: 'https://images.unsplash.com/photo-1583344199965-05e8b4e7da3c?w=800&auto=format&fit=crop&q=80', 
+    title: 'Hampi Ruins Park RV', 
+    desc: 'Park your RV right beside the visually stunning giant boulder formations of Karnataka.',
+    category: 'rv',
+    price: 2500,
+    lat: 15.3350,
+    lng: 76.4600
+  },
+  { 
+    id: 23,
+    img: 'https://plus.unsplash.com/premium_photo-1681404176735-af7b4ae1889c?w=800&auto=format&fit=crop&q=80', 
+    title: 'Mahabaleshwar Farm Spot', 
+    desc: 'Unplug and relax in highly equipped RV setups nestled right in fresh strawberry fields.',
+    category: 'rv',
+    price: 4000,
+    lat: 17.9307,
+    lng: 73.6477
+  },
+  { 
+    id: 24,
+    img: 'https://images.unsplash.com/photo-1596883203923-d958d551ba86?w=800&auto=format&fit=crop&q=80', 
+    title: 'Coorg Coffee Estate Trailer', 
+    desc: 'Enjoy an exclusive luxury trailer experience breathing in the rich misty coffee aromas.',
+    category: 'rv',
+    price: 5500,
+    lat: 12.3375,
+    lng: 75.8069
   }
 ];
 

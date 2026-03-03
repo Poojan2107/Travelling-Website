@@ -19,7 +19,7 @@ function Services() {
       </div>
       <div className="cards-grid">
         {servicesData.map((service, index) => (
-          <Link to={`/service/${service.id}`} key={service.id} style={{ textDecoration: 'none' }}>
+          <Link to={`/service/${service.id}`} key={service.id} style={{ textDecoration: 'none', color: 'var(--text-main)' }}>
             <div className="glass-card service-card">
               <div className="card-icon"><i className={`fas ${service.icon}`}></i></div>
               <h3>{service.title}</h3>

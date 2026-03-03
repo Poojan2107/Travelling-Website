@@ -16,8 +16,8 @@ function Home() {
       transition={{ duration: 0.5 }}
     >
       <Hero />
-      <Services />
       <Destinations />
+      <Services />
       <About />
       <Contact />
     </motion.main>
