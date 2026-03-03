@@ -1,6 +1,13 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { auth, provider } from '../firebase';
-import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
+import {
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
 
 const AuthContext = createContext();
 
@@ -11,33 +18,61 @@ export const AuthProvider = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Listen to Firebase authentication state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        // Map firebase user object to our app's user object format
         setUser({
-          name: currentUser.displayName,
+          name: currentUser.displayName || currentUser.email?.split('@')[0],
           email: currentUser.email,
-          avatar: currentUser.photoURL,
-          uid: currentUser.uid
+          avatar: currentUser.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.displayName || currentUser.email)}&background=0ea5e9&color=fff&bold=true`,
+          uid: currentUser.uid,
         });
       } else {
         setUser(null);
       }
       setLoading(false);
     });
-
-    return () => unsubscribe(); // Cleanup subscription on unmount
+    return () => unsubscribe();
   }, []);
 
   const loginWithGoogle = async () => {
     try {
       await signInWithPopup(auth, provider);
-      setIsModalOpen(false); // Close modal on success
+      setIsModalOpen(false);
     } catch (error) {
-      console.error("Error signing in with Google:", error);
-      alert("Failed to log in with Google. Please try again.");
+      console.error('Google sign-in error:', error);
+      throw error;
+    }
+  };
+
+  const loginWithEmail = async (email, password) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('Email sign-in error:', error);
+      throw error;
+    }
+  };
+
+  const signUpWithEmail = async (name, email, password) => {
+    try {
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(result.user, {
+        displayName: name,
+        photoURL: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=0ea5e9&color=fff&bold=true`,
+      });
+      // Manually update local user state since onAuthStateChanged may not catch displayName immediately
+      setUser({
+        name,
+        email: result.user.email,
+        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=0ea5e9&color=fff&bold=true`,
+        uid: result.user.uid,
+      });
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('Sign-up error:', error);
+      throw error;
     }
   };
 
@@ -45,7 +80,7 @@ export const AuthProvider = ({ children }) => {
     try {
       await signOut(auth);
     } catch (error) {
-      console.error("Error signing out:", error);
+      console.error('Sign-out error:', error);
     }
   };
 
@@ -53,7 +88,7 @@ export const AuthProvider = ({ children }) => {
   const closeLoginModal = () => setIsModalOpen(false);
 
   return (
-    <AuthContext.Provider value={{ user, loginWithGoogle, logout, isModalOpen, openLoginModal, closeLoginModal }}>
+    <AuthContext.Provider value={{ user, loginWithGoogle, loginWithEmail, signUpWithEmail, logout, isModalOpen, openLoginModal, closeLoginModal }}>
       {!loading && children}
     </AuthContext.Provider>
   );
