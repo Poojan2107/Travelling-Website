@@ -86,55 +86,27 @@ function DestinationDetails() {
       return;
     }
 
-    const cleaningFee = 1000;
-    const finalAmount = totalPrice + cleaningFee;
+    toast.info("Processing your booking...", { position: "top-center", autoClose: 1000 });
+    
+    setTimeout(() => {
+      const newBooking = {
+        id: "BK_" + Math.floor(Math.random() * 100000000),
+        destinationId: destination.id,
+        destinationTitle: destination.title,
+        destinationImg: destination.img,
+        checkIn: checkIn.toISOString(),
+        checkOut: checkOut.toISOString(),
+        guests,
+        totalPrice: finalAmount,
+        bookingDate: new Date().toISOString()
+      };
 
-    // Razorpay Options
-    const options = {
-      key: "rzp_test_FakerKeyForPortfolio", // Replace with real key in production
-      amount: finalAmount * 100, // Amount in paise
-      currency: "INR",
-      name: "Traveling Tent",
-      description: `Booking for ${destination.title}`,
-      image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=100&q=80",
-      handler: function (response) {
-        // This fires upon successful test payment
-        const newBooking = {
-          id: response.razorpay_payment_id || Date.now(),
-          destinationId: destination.id,
-          destinationTitle: destination.title,
-          destinationImg: destination.img,
-          checkIn: checkIn.toISOString(),
-          checkOut: checkOut.toISOString(),
-          guests,
-          totalPrice: finalAmount,
-          bookingDate: new Date().toISOString()
-        };
-
-        const existingBookings = JSON.parse(localStorage.getItem('travelBookings')) || [];
-        localStorage.setItem('travelBookings', JSON.stringify([...existingBookings, newBooking]));
-        
-        toast.success("Payment successful! Redirecting...", { position: "bottom-right" });
-        setTimeout(() => {
-          navigate('/checkout-success', { state: { booking: newBooking } });
-        }, 1500);
-      },
-      prefill: {
-        name: "Test User",
-        email: "test.user@example.com",
-        contact: "9999999999"
-      },
-      theme: {
-        color: "#0ea5e9"
-      }
-    };
-
-    if (window.Razorpay) {
-      const rzp1 = new window.Razorpay(options);
-      rzp1.open();
-    } else {
-      toast.error("Razorpay SDK failed to load. Are you offline?", { position: "top-center" });
-    }
+      const existingBookings = JSON.parse(localStorage.getItem('travelBookings')) || [];
+      localStorage.setItem('travelBookings', JSON.stringify([...existingBookings, newBooking]));
+      
+      toast.success("Booking confirmed!", { position: "bottom-right", autoClose: 2000 });
+      navigate('/checkout-success', { state: { booking: newBooking } });
+    }, 1000);
   };
 
   return (
@@ -256,7 +228,7 @@ function DestinationDetails() {
             <h3><span className="price">₹{destination.price.toLocaleString('en-IN')}</span> / night</h3>
             
             <form onSubmit={handleBooking} className="mt-4">
-              <div className="date-picker-group" style={{ display: 'flex', gap: '10px' }}>
+              <div className="date-picker-group" style={{ display: 'flex', flexDirection: window.innerWidth < 600 ? 'column' : 'row', gap: '10px' }}>
                 <div className="input-group mb-0" style={{ flex: 1 }}>
                   <label style={{position: 'static', fontSize: '0.85rem'}}>Check-in</label>
                   <DatePicker 

@@ -1,0 +1,29 @@
+From 6f93ec7427de0cf9a5585fd3dd126e9dc99d9cf1 Mon Sep 17 00:00:00 2001
+From: Poojan P Shrivastav <poojanshrivastav21@gmail.com>
+Date: Tue, 3 Mar 2026 15:32:57 +0530
+Subject: [PATCH] style: fix sort dropdown readability in dark mode
+
+---
+ src/components/Destinations.jsx | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/components/Destinations.jsx b/src/components/Destinations.jsx
+index 3661903..7fc6469 100644
+--- a/src/components/Destinations.jsx
++++ b/src/components/Destinations.jsx
+@@ -352,9 +352,9 @@ function Destinations() {
+               onChange={(e) => setSortOption(e.target.value)}
+               style={{ background: 'transparent', border: 'none', color: 'var(--text-main)', outline: 'none', cursor: 'pointer' }}
+             >
+-              <option value="recommended">Recommended</option>
+-              <option value="price-low">Price: Low to High</option>
+-              <option value="price-high">Price: High to Low</option>
++              <option value="recommended" style={{background: '#0f172a', color: '#fff'}}>Recommended</option>
++              <option value="price-low" style={{background: '#0f172a', color: '#fff'}}>Price: Low to High</option>
++              <option value="price-high" style={{background: '#0f172a', color: '#fff'}}>Price: High to Low</option>
+             </select>
+           </div>
+         </div>
+-- 
+2.49.0.windows.1
+

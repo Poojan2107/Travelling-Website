@@ -76,9 +76,11 @@ function CartDrawer() {
                   >
                     <div style={{ flex: 1 }}>
                       <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>{item.name}</h4>
-                      <p style={{ color: 'var(--primary)', fontWeight: 'bold', margin: 0 }}>
-                        ₹{item.price.toLocaleString('en-IN')}/day
-                      </p>
+                      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+                        <p style={{ color: 'var(--primary)', fontWeight: 'bold', margin: 0 }}>
+                          ₹{(item.price).toLocaleString("en-IN")}/day
+                        </p>
+                      </div>
                     </div>
                     
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.5rem' }}>
