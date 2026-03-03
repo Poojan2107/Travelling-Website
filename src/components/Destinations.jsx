@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SkeletonCard from './SkeletonCard';
 
 export const destinationsData = [
   { 
@@ -463,10 +464,25 @@ function Destinations() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOption, setSortOption] = useState('recommended');
   const [priceMax, setPriceMax] = useState(12000);
+  const [isFiltering, setIsFiltering] = useState(false);
   const [wishlist, setWishlist] = useState(() => {
     try { return JSON.parse(localStorage.getItem('travelWishlist')) || []; }
     catch { return []; }
   });
+
+  // Listen for search from Navbar
+  useEffect(() => {
+    const handler = (e) => setSearchQuery(e.detail || '');
+    window.addEventListener('navbar-search', handler);
+    return () => window.removeEventListener('navbar-search', handler);
+  }, []);
+
+  // Brief skeleton flash when filters change
+  useEffect(() => {
+    setIsFiltering(true);
+    const t = setTimeout(() => setIsFiltering(false), 350);
+    return () => clearTimeout(t);
+  }, [activeCategory, searchQuery, sortOption, priceMax]);
 
   const isWishlisted = (id) => wishlist.some(w => w.id === id);
 
@@ -557,17 +573,22 @@ function Destinations() {
         </div>
       </div>
 
-      {filteredDestinations.length === 0 ? (
+      {isFiltering ? (
+        <div className="portfolio-grid">
+          {[...Array(6)].map((_, i) => <SkeletonCard key={i} />)}
+        </div>
+      ) : filteredDestinations.length === 0 ? (
         <div className="no-results glass-card">
-          <i className="fas fa-map-signs"></i>
+          <i className="fas fa-map-signs" />
           <h3>No destinations found</h3>
           <p>Try adjusting your search or category filter.</p>
-          <button className="btn btn-outline mt-3" onClick={() => {setSearchQuery(''); setActiveCategory('all');}}>
+          <button className="btn btn-outline mt-3" onClick={() => {setSearchQuery(''); setActiveCategory('all'); setPriceMax(12000);}}>
             Clear Filters
           </button>
         </div>
       ) : (
         <div className="portfolio-grid">
+
           {filteredDestinations.map((dest) => (
             <div className="portfolio-card fade-up" key={dest.id}>
               <div className="img-wrapper" style={{ position: 'relative' }}>

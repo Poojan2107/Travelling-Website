@@ -1,0 +1,27 @@
+{
+    "name": "TravelingTent",
+    "short_name": "TravTent",
+    "description": "Premium camping and adventure destinations across India",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0f1e",
+    "theme_color": "#0ea5e9",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "https://ui-avatars.com/api/?name=TT&background=0ea5e9&color=fff&size=192&bold=true",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "https://ui-avatars.com/api/?name=TT&background=0ea5e9&color=fff&size=512&bold=true",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "travel",
+        "lifestyle"
+    ],
+    "screenshots": []
+}
