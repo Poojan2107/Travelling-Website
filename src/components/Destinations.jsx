@@ -113,8 +113,18 @@ export const destinationsData = [
     lng: 74.3805
   },
   { 
+    id: 11,
+    img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&auto=format&fit=crop&q=80', 
+    title: 'Gulmarg Ski Resort', 
+    desc: 'Stay warm in alpine huts overlooking the pristine snow-covered valleys of Kashmir.',
+    category: 'mountain',
+    price: 8000,
+    lat: 34.0484,
+    lng: 74.3805
+  },
+  { 
     id: 12,
-    img: 'https://images.unsplash.com/photo-1542352875-a0db130c25a5?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&auto=format&fit=crop&q=80', 
     title: 'Tawang Monastery Trek', 
     desc: 'Wander through spiritual trails and experience raw mountain culture in Arunachal Pradesh.',
     category: 'mountain',
@@ -124,7 +134,7 @@ export const destinationsData = [
   },
   { 
     id: 13,
-    img: 'https://images.unsplash.com/photo-1629853381655-b4fed7b5fc75?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&auto=format&fit=crop&q=80', 
     title: 'Dal Lake Houseboats', 
     desc: 'Float peacefully in luxury wooden shikaras over the mirrored waters of Srinagar.',
     category: 'lake',
@@ -134,7 +144,7 @@ export const destinationsData = [
   },
   { 
     id: 14,
-    img: 'https://images.unsplash.com/photo-1533590520698-c6f370cedd1c?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&auto=format&fit=crop&q=80', 
     title: 'Nainital Lakeside Camp', 
     desc: 'Enjoy a cool evening breeze sitting right at the edge of the emerald green Naini Lake.',
     category: 'lake',
@@ -144,7 +154,7 @@ export const destinationsData = [
   },
   { 
     id: 15,
-    img: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1439853949127-fa647821eba0?w=800&auto=format&fit=crop&q=80', 
     title: 'Tsomgo Lake Sikkim', 
     desc: 'Witness a majestic glowing glacial lake surrounded by steep, rugged Himalayan cliffs.',
     category: 'lake',
@@ -154,7 +164,7 @@ export const destinationsData = [
   },
   { 
     id: 16,
-    img: 'https://images.unsplash.com/photo-1583000574044-f87eeb883b2a?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80', 
     title: 'Varkala Cliffs Beach', 
     desc: 'Camp safely high above the Arabian sea on gorgeous red laterite cliff-sides in Kerala.',
     category: 'beach',
@@ -164,7 +174,7 @@ export const destinationsData = [
   },
   { 
     id: 17,
-    img: 'https://plus.unsplash.com/premium_photo-1669830500171-f9261fc9defb?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1520116468816-95b69f847357?w=800&auto=format&fit=crop&q=80', 
     title: 'Palolem Beach Goa', 
     desc: 'Kick back in colorful beach huts under gently swaying palms away from the city noise.',
     category: 'beach',
@@ -174,7 +184,7 @@ export const destinationsData = [
   },
   { 
     id: 18,
-    img: 'https://images.unsplash.com/photo-1628189675276-8051752dfbfb?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&auto=format&fit=crop&q=80', 
     title: 'Kaziranga Safari Park', 
     desc: 'Wake up to the roars of the wild and spot the majestic one-horned rhinoceros in Assam.',
     category: 'forest',
@@ -184,7 +194,7 @@ export const destinationsData = [
   },
   { 
     id: 19,
-    img: 'https://images.unsplash.com/photo-1601224855325-a1fc57731998?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=800&auto=format&fit=crop&q=80', 
     title: 'Wayanad Treehouse', 
     desc: 'Sleep high in the canopy among singing birds in eco-friendly luxury treehouses.',
     category: 'forest',
@@ -194,7 +204,7 @@ export const destinationsData = [
   },
   { 
     id: 20,
-    img: 'https://plus.unsplash.com/premium_photo-1666878161556-3decc8b9fbd8?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?w=800&auto=format&fit=crop&q=80', 
     title: 'Rann of Kutch Salt Flats', 
     desc: 'Camp under massive starlit skies on seemingly endless horizons of pure white salt.',
     category: 'desert',
@@ -204,7 +214,7 @@ export const destinationsData = [
   },
   { 
     id: 21,
-    img: 'https://images.unsplash.com/photo-1549416801-7d1ae34e3415?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&auto=format&fit=crop&q=80', 
     title: 'Nubra Valley Dunes', 
     desc: 'Explore cold-desert sand dunes riding Bactrian camels amidst high snow-capped peaks.',
     category: 'desert',
@@ -214,7 +224,7 @@ export const destinationsData = [
   },
   { 
     id: 22,
-    img: 'https://images.unsplash.com/photo-1583344199965-05e8b4e7da3c?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=800&auto=format&fit=crop&q=80', 
     title: 'Hampi Ruins Park RV', 
     desc: 'Park your RV right beside the visually stunning giant boulder formations of Karnataka.',
     category: 'rv',
@@ -224,7 +234,7 @@ export const destinationsData = [
   },
   { 
     id: 23,
-    img: 'https://plus.unsplash.com/premium_photo-1681404176735-af7b4ae1889c?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1533873984035-25970ab07461?w=800&auto=format&fit=crop&q=80', 
     title: 'Mahabaleshwar Farm Spot', 
     desc: 'Unplug and relax in highly equipped RV setups nestled right in fresh strawberry fields.',
     category: 'rv',
@@ -234,7 +244,7 @@ export const destinationsData = [
   },
   { 
     id: 24,
-    img: 'https://images.unsplash.com/photo-1596883203923-d958d551ba86?w=800&auto=format&fit=crop&q=80', 
+    img: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=800&auto=format&fit=crop&q=80', 
     title: 'Coorg Coffee Estate Trailer', 
     desc: 'Enjoy an exclusive luxury trailer experience breathing in the rich misty coffee aromas.',
     category: 'rv',
