@@ -81,8 +81,23 @@ function DestinationDetails() {
       try {
         const q = query(collection(db, `reviews_${destination.id}`), orderBy('createdAt', 'desc'));
         const snap = await getDocs(q);
-        setReviews(snap.docs.map(d => ({ id: d.id, ...d.data() })));
-      } catch { setReviews([]); }
+        if (snap.empty) {
+          // Add dummy reviews for demo purposes
+          const dummyReviews = [
+            { id: 'd1', userName: 'Sarah Jenkins', userAvatar: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=random', rating: 5, text: 'Absolutely breathtaking! The views were even better than the pictures. The equipment provided was top notch.', createdAt: { seconds: Date.now()/1000 - 86400 * 2 } },
+            { id: 'd2', userName: 'Michael Chen', userAvatar: 'https://ui-avatars.com/api/?name=Michael+Chen&background=random', rating: 4, text: 'Great experience overall. The location was pristine and quiet. Will definitely be booking with TravelingTent again.', createdAt: { seconds: Date.now()/1000 - 86400 * 5 } }
+          ];
+          setReviews(dummyReviews);
+        } else {
+          setReviews(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+        }
+      } catch {
+        // Fallback to dummy on error too
+        const dummyReviews = [
+          { id: 'd1', userName: 'Sarah Jenkins', userAvatar: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=random', rating: 5, text: 'Absolutely breathtaking! The views were even better than the pictures.', createdAt: { seconds: Date.now()/1000 - 86400 * 2 } },
+        ];
+        setReviews(dummyReviews);
+      }
       finally { setReviewsLoading(false); }
     };
     fetchReviews();

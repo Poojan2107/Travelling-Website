@@ -1,14 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
-
-// ─── EmailJS credentials (set these in your .env file) ─────────────────────
-// VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
-// VITE_EMAILJS_TEMPLATE_ID=template_xxxxxxx
-// VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxx
-// ───────────────────────────────────────────────────────────────────────────
-
 function Contact() {
   const formRef = useRef();
   const [loading, setLoading] = useState(false);
@@ -18,28 +10,32 @@ function Contact() {
     e.preventDefault();
     setLoading(true);
 
-    const serviceId  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    try {
+      // Using FormSubmit - an alternative that requires zero env variables or authentication keys
+      const response = await fetch("https://formsubmit.co/ajax/hello@travelingtent.in", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formRef.current.from_name.value,
+          email: formRef.current.from_email.value,
+          subject: formRef.current.subject.value,
+          message: formRef.current.message.value
+        })
+      });
 
-    if (serviceId && templateId && publicKey) {
-      // ── Real EmailJS send ──
-      try {
-        await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+      if (response.ok) {
         setSuccessStatus(true);
         formRef.current.reset();
         toast.success("Message sent! We'll be in touch soon 🙌", { position: 'bottom-right' });
-        setTimeout(() => setSuccessStatus(false), 6000);
-      } catch (err) {
-        toast.error('Failed to send message. Please try again.', { position: 'top-center' });
+        setTimeout(() => setSuccessStatus(false), 5000);
+      } else {
+        throw new Error('Failed to send');
       }
-    } else {
-      // ── Demo mode (no keys configured yet) ──
-      await new Promise(r => setTimeout(r, 1200));
-      setSuccessStatus(true);
-      formRef.current.reset();
-      toast.info('Demo mode: EmailJS keys not configured yet. Configure VITE_EMAILJS_* in .env to send real emails.', { position: 'bottom-right', autoClose: 6000 });
-      setTimeout(() => setSuccessStatus(false), 6000);
+    } catch (err) {
+      toast.error('Failed to send message. Please try again later.', { position: 'top-center' });
     }
 
     setLoading(false);
