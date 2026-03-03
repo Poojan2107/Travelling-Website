@@ -104,16 +104,6 @@ export const destinationsData = [
   },
   { 
     id: 11,
-    img: 'https://images.unsplash.com/photo-1580213159263-8a9d18b5bdeb?w=800&auto=format&fit=crop&q=80', 
-    title: 'Gulmarg Ski Resort', 
-    desc: 'Stay warm in alpine huts overlooking the pristine snow-covered valleys of Kashmir.',
-    category: 'mountain',
-    price: 8000,
-    lat: 34.0484,
-    lng: 74.3805
-  },
-  { 
-    id: 11,
     img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&auto=format&fit=crop&q=80', 
     title: 'Gulmarg Ski Resort', 
     desc: 'Stay warm in alpine huts overlooking the pristine snow-covered valleys of Kashmir.',
@@ -267,15 +257,26 @@ const categories = [
 function Destinations() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortOption, setSortOption] = useState('recommended');
 
   const filteredDestinations = useMemo(() => {
-    return destinationsData.filter((dest) => {
+    let result = destinationsData.filter((dest) => {
       const matchesCategory = activeCategory === 'all' || dest.category === activeCategory;
-      const matchesSearch = dest.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            dest.desc.toLowerCase().includes(searchQuery.toLowerCase());
+      const lowerQuery = searchQuery.toLowerCase();
+      const matchesSearch = dest.title.toLowerCase().includes(lowerQuery) || 
+                            dest.desc.toLowerCase().includes(lowerQuery) ||
+                            dest.category.toLowerCase().includes(lowerQuery);
       return matchesCategory && matchesSearch;
     });
-  }, [activeCategory, searchQuery]);
+
+    if (sortOption === 'price-low') {
+      result.sort((a, b) => a.price - b.price);
+    } else if (sortOption === 'price-high') {
+      result.sort((a, b) => b.price - a.price);
+    }
+
+    return result;
+  }, [activeCategory, searchQuery, sortOption]);
 
   return (
     <section className="portfolio section-padding" id="portfolio">
@@ -285,14 +286,29 @@ function Destinations() {
       </div>
 
       <div className="filter-container">
-        <div className="search-bar glass-card">
-          <i className="fas fa-search"></i>
-          <input 
-            type="text" 
-            placeholder="Search destinations (e.g., Manali, Beach)..." 
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+        <div className="search-bar glass-card" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+          <div style={{ display: 'flex', flex: '1', alignItems: 'center', minWidth: '200px' }}>
+            <i className="fas fa-search" style={{ marginRight: '10px' }}></i>
+            <input 
+              type="text" 
+              placeholder="Search destinations (e.g., Manali, Beach)..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{ flex: '1', background: 'transparent', border: 'none', color: 'var(--text-main)', outline: 'none' }}
+            />
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(0,0,0,0.2)', padding: '5px 15px', borderRadius: '20px' }}>
+            <label style={{ marginRight: '10px', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Sort by:</label>
+            <select 
+              value={sortOption} 
+              onChange={(e) => setSortOption(e.target.value)}
+              style={{ background: 'transparent', border: 'none', color: 'var(--text-main)', outline: 'none', cursor: 'pointer' }}
+            >
+              <option value="recommended">Recommended</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
         </div>
 
         <div className="category-filters">
