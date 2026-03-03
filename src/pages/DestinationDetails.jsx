@@ -163,6 +163,38 @@ function DestinationDetails() {
             <p>{destination.desc}</p>
             <p className="mt-2">Prepare for a trip you will never forget. Connect with nature and enjoy world-class amenities right in the wild. All of our curated locations guarantee safety, pristine views, and easy access to premium trails.</p>
             
+            {destination.activities && destination.activities.length > 0 && (
+              <>
+                <h4 className="mt-4" style={{borderBottom: '1px solid var(--card-border)', paddingBottom: '0.5rem'}}><i className="fas fa-compass" style={{color: 'var(--primary)', marginRight: '10px'}}></i>Top Experiences</h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
+                  {destination.activities.map((act, i) => (
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.05)', padding: '0.8rem 1rem', borderRadius: '8px', display: 'flex', alignItems: 'center' }}>
+                      <i className="fas fa-check-circle" style={{color: 'var(--primary)', marginRight: '10px'}}></i>
+                      <span style={{ fontSize: '0.95rem' }}>{act}</span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {destination.itinerary && destination.itinerary.length > 0 && (
+              <>
+                <h4 className="mt-4" style={{borderBottom: '1px solid var(--card-border)', paddingBottom: '0.5rem'}}><i className="far fa-calendar-alt" style={{color: 'var(--primary)', marginRight: '10px'}}></i>Recommended Itinerary</h4>
+                <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {destination.itinerary.map((day, i) => {
+                    const [dayLabel, ...descParts] = day.split(':');
+                    const desc = descParts.join(':').trim();
+                    return (
+                      <div key={i} className="fade-up" style={{ background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '8px', borderLeft: '4px solid var(--accent)' }}>
+                        <strong style={{ color: 'var(--text-main)', display: 'block', marginBottom: '0.3rem', fontSize: '1.05rem' }}>{dayLabel}</strong>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>{desc}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+            
             <h4 className="mt-4" style={{borderBottom: '1px solid var(--card-border)', paddingBottom: '0.5rem'}}>Map Location</h4>
             <div style={{height: '300px', width: '100%', marginTop: '1rem', borderRadius: '12px', overflow: 'hidden'}}>
               <MapContainer center={[destination.lat, destination.lng]} zoom={13} style={{ height: '100%', width: '100%', zIndex: 1 }}>

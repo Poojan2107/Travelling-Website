@@ -10,7 +10,9 @@ export const destinationsData = [
     category: 'mountain',
     price: 3500,
     lat: 32.2396,
-    lng: 77.1887
+    lng: 77.1887,
+    activities: ["Avalanche Safety Training","Rock Climbing Intro","Alpine Photography Walk"],
+    itinerary: ["Day 1: Basecamp Acclimatization","Day 2: Peak Ascent & Ridge Walk","Day 3: Valley Descent & Hot Springs"]
   },
   { 
     id: 2,
@@ -20,7 +22,9 @@ export const destinationsData = [
     category: 'lake',
     price: 5500,
     lat: 33.7595,
-    lng: 78.6674
+    lng: 78.6674,
+    activities: ["Kayaking & Paddleboarding","Sunset Fishing Session","Lakeside Yoga"],
+    itinerary: ["Day 1: Lakeside Setup & Kayak","Day 2: Island Exploration & Picnic","Day 3: Sunrise Photography"]
   },
   { 
     id: 3,
@@ -30,7 +34,9 @@ export const destinationsData = [
     category: 'beach',
     price: 2500,
     lat: 14.5501,
-    lng: 74.3180
+    lng: 74.3180,
+    activities: ["Surfing Lessons","Coral Reef Snorkeling","Beach Volleyball & Bonfire"],
+    itinerary: ["Day 1: Arrival & Coastal Walk","Day 2: Scuba/Snorkeling Session","Day 3: Local Seafood & Relaxation"]
   },
   { 
     id: 4,
@@ -40,7 +46,9 @@ export const destinationsData = [
     category: 'forest',
     price: 4000,
     lat: 29.5300,
-    lng: 78.7747
+    lng: 78.7747,
+    activities: ["Guided Canopy Walk","Wildlife Tracking Safari","Botanical Foraging"],
+    itinerary: ["Day 1: Deep Forest Trek","Day 2: Flora & Fauna Safari","Day 3: Waterfall Hike & Swim"]
   },
   { 
     id: 5,
@@ -50,7 +58,9 @@ export const destinationsData = [
     category: 'rv',
     price: 6000,
     lat: 30.0869,
-    lng: 78.2676
+    lng: 78.2676,
+    activities: ["Outdoor BBQ & Grilling","Campfire Storytelling","Local Area Cycling"],
+    itinerary: ["Day 1: RV Hookup & Local Market","Day 2: Scenic Drive & Picnic","Day 3: Community Bonfire"]
   },
   { 
     id: 6,
@@ -60,7 +70,9 @@ export const destinationsData = [
     category: 'desert',
     price: 3000,
     lat: 26.9157,
-    lng: 70.9083
+    lng: 70.9083,
+    activities: ["Camel & Jeep Dune Bashing","Stargazing & Astronomy","Sandboarding"],
+    itinerary: ["Day 1: Desert Entry & Sunset Safari","Day 2: Oasis Visit & Sandboarding","Day 3: Cultural Village Tour"]
   },
   { 
     id: 7,
@@ -70,7 +82,9 @@ export const destinationsData = [
     category: 'mountain',
     price: 8500,
     lat: 30.5332,
-    lng: 79.5663
+    lng: 79.5663,
+    activities: ["Avalanche Safety Training","Rock Climbing Intro","Alpine Photography Walk"],
+    itinerary: ["Day 1: Basecamp Acclimatization","Day 2: Peak Ascent & Ridge Walk","Day 3: Valley Descent & Hot Springs"]
   },
   { 
     id: 8,
@@ -80,7 +94,9 @@ export const destinationsData = [
     category: 'desert',
     price: 6500,
     lat: 32.2215,
-    lng: 78.0336
+    lng: 78.0336,
+    activities: ["Camel & Jeep Dune Bashing","Stargazing & Astronomy","Sandboarding"],
+    itinerary: ["Day 1: Desert Entry & Sunset Safari","Day 2: Oasis Visit & Sandboarding","Day 3: Cultural Village Tour"]
   },
   { 
     id: 9,
@@ -90,7 +106,9 @@ export const destinationsData = [
     category: 'beach',
     price: 12000,
     lat: 11.7587,
-    lng: 92.6560
+    lng: 92.6560,
+    activities: ["Surfing Lessons","Coral Reef Snorkeling","Beach Volleyball & Bonfire"],
+    itinerary: ["Day 1: Arrival & Coastal Walk","Day 2: Scuba/Snorkeling Session","Day 3: Local Seafood & Relaxation"]
   },
   { 
     id: 10,
@@ -100,7 +118,9 @@ export const destinationsData = [
     category: 'forest',
     price: 4500,
     lat: 10.0889,
-    lng: 77.0595
+    lng: 77.0595,
+    activities: ["Guided Canopy Walk","Wildlife Tracking Safari","Botanical Foraging"],
+    itinerary: ["Day 1: Deep Forest Trek","Day 2: Flora & Fauna Safari","Day 3: Waterfall Hike & Swim"]
   },
   { 
     id: 11,
@@ -110,7 +130,9 @@ export const destinationsData = [
     category: 'mountain',
     price: 8000,
     lat: 34.0484,
-    lng: 74.3805
+    lng: 74.3805,
+    activities: ["Avalanche Safety Training","Rock Climbing Intro","Alpine Photography Walk"],
+    itinerary: ["Day 1: Basecamp Acclimatization","Day 2: Peak Ascent & Ridge Walk","Day 3: Valley Descent & Hot Springs"]
   },
   { 
     id: 12,
@@ -120,7 +142,9 @@ export const destinationsData = [
     category: 'mountain',
     price: 4500,
     lat: 27.5861,
-    lng: 91.8596
+    lng: 91.8596,
+    activities: ["Avalanche Safety Training","Rock Climbing Intro","Alpine Photography Walk"],
+    itinerary: ["Day 1: Basecamp Acclimatization","Day 2: Peak Ascent & Ridge Walk","Day 3: Valley Descent & Hot Springs"]
   },
   { 
     id: 13,
@@ -130,7 +154,9 @@ export const destinationsData = [
     category: 'lake',
     price: 7000,
     lat: 34.1086,
-    lng: 74.8672
+    lng: 74.8672,
+    activities: ["Kayaking & Paddleboarding","Sunset Fishing Session","Lakeside Yoga"],
+    itinerary: ["Day 1: Lakeside Setup & Kayak","Day 2: Island Exploration & Picnic","Day 3: Sunrise Photography"]
   },
   { 
     id: 14,
@@ -140,7 +166,9 @@ export const destinationsData = [
     category: 'lake',
     price: 3500,
     lat: 29.3803,
-    lng: 79.4636
+    lng: 79.4636,
+    activities: ["Kayaking & Paddleboarding","Sunset Fishing Session","Lakeside Yoga"],
+    itinerary: ["Day 1: Lakeside Setup & Kayak","Day 2: Island Exploration & Picnic","Day 3: Sunrise Photography"]
   },
   { 
     id: 15,
@@ -150,7 +178,9 @@ export const destinationsData = [
     category: 'lake',
     price: 6000,
     lat: 27.3742,
-    lng: 88.7618
+    lng: 88.7618,
+    activities: ["Kayaking & Paddleboarding","Sunset Fishing Session","Lakeside Yoga"],
+    itinerary: ["Day 1: Lakeside Setup & Kayak","Day 2: Island Exploration & Picnic","Day 3: Sunrise Photography"]
   },
   { 
     id: 16,
@@ -160,7 +190,9 @@ export const destinationsData = [
     category: 'beach',
     price: 3500,
     lat: 8.7378,
-    lng: 76.7163
+    lng: 76.7163,
+    activities: ["Surfing Lessons","Coral Reef Snorkeling","Beach Volleyball & Bonfire"],
+    itinerary: ["Day 1: Arrival & Coastal Walk","Day 2: Scuba/Snorkeling Session","Day 3: Local Seafood & Relaxation"]
   },
   { 
     id: 17,
@@ -170,7 +202,9 @@ export const destinationsData = [
     category: 'beach',
     price: 4000,
     lat: 15.0100,
-    lng: 74.0233
+    lng: 74.0233,
+    activities: ["Surfing Lessons","Coral Reef Snorkeling","Beach Volleyball & Bonfire"],
+    itinerary: ["Day 1: Arrival & Coastal Walk","Day 2: Scuba/Snorkeling Session","Day 3: Local Seafood & Relaxation"]
   },
   { 
     id: 18,
@@ -180,7 +214,9 @@ export const destinationsData = [
     category: 'forest',
     price: 5500,
     lat: 26.5775,
-    lng: 93.1711
+    lng: 93.1711,
+    activities: ["Guided Canopy Walk","Wildlife Tracking Safari","Botanical Foraging"],
+    itinerary: ["Day 1: Deep Forest Trek","Day 2: Flora & Fauna Safari","Day 3: Waterfall Hike & Swim"]
   },
   { 
     id: 19,
@@ -190,7 +226,9 @@ export const destinationsData = [
     category: 'forest',
     price: 6500,
     lat: 11.6854,
-    lng: 76.1320
+    lng: 76.1320,
+    activities: ["Guided Canopy Walk","Wildlife Tracking Safari","Botanical Foraging"],
+    itinerary: ["Day 1: Deep Forest Trek","Day 2: Flora & Fauna Safari","Day 3: Waterfall Hike & Swim"]
   },
   { 
     id: 20,
@@ -200,7 +238,9 @@ export const destinationsData = [
     category: 'desert',
     price: 5000,
     lat: 23.8315,
-    lng: 69.8322
+    lng: 69.8322,
+    activities: ["Camel & Jeep Dune Bashing","Stargazing & Astronomy","Sandboarding"],
+    itinerary: ["Day 1: Desert Entry & Sunset Safari","Day 2: Oasis Visit & Sandboarding","Day 3: Cultural Village Tour"]
   },
   { 
     id: 21,
@@ -210,7 +250,9 @@ export const destinationsData = [
     category: 'desert',
     price: 4500,
     lat: 34.6865,
-    lng: 77.5583
+    lng: 77.5583,
+    activities: ["Camel & Jeep Dune Bashing","Stargazing & Astronomy","Sandboarding"],
+    itinerary: ["Day 1: Desert Entry & Sunset Safari","Day 2: Oasis Visit & Sandboarding","Day 3: Cultural Village Tour"]
   },
   { 
     id: 22,
@@ -220,7 +262,9 @@ export const destinationsData = [
     category: 'rv',
     price: 2500,
     lat: 15.3350,
-    lng: 76.4600
+    lng: 76.4600,
+    activities: ["Outdoor BBQ & Grilling","Campfire Storytelling","Local Area Cycling"],
+    itinerary: ["Day 1: RV Hookup & Local Market","Day 2: Scenic Drive & Picnic","Day 3: Community Bonfire"]
   },
   { 
     id: 23,
@@ -230,7 +274,9 @@ export const destinationsData = [
     category: 'rv',
     price: 4000,
     lat: 17.9307,
-    lng: 73.6477
+    lng: 73.6477,
+    activities: ["Outdoor BBQ & Grilling","Campfire Storytelling","Local Area Cycling"],
+    itinerary: ["Day 1: RV Hookup & Local Market","Day 2: Scenic Drive & Picnic","Day 3: Community Bonfire"]
   },
   { 
     id: 24,
@@ -240,7 +286,9 @@ export const destinationsData = [
     category: 'rv',
     price: 5500,
     lat: 12.3375,
-    lng: 75.8069
+    lng: 75.8069,
+    activities: ["Outdoor BBQ & Grilling","Campfire Storytelling","Local Area Cycling"],
+    itinerary: ["Day 1: RV Hookup & Local Market","Day 2: Scenic Drive & Picnic","Day 3: Community Bonfire"]
   }
 ];
 
