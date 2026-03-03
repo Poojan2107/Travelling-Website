@@ -147,9 +147,9 @@ function MyBookings() {
               <div style={{ marginBottom: '1.5rem' }}>
                 <label style={{ display: 'block', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Preferred Currency</label>
                 <select style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--card-border)', background: 'rgba(0,0,0,0.2)', color: 'var(--text-main)' }}>
-                  <option>INR (₹) - Indian Rupee</option>
-                  <option disabled>USD ($) - US Dollar</option>
-                  <option disabled>EUR (€) - Euro</option>
+                  <option style={{background: '#0f172a', color: '#fff'}}>INR (₹) - Indian Rupee</option>
+                  <option disabled style={{background: '#0f172a', color: '#fff'}}>USD ($) - US Dollar</option>
+                  <option disabled style={{background: '#0f172a', color: '#fff'}}>EUR (€) - Euro</option>
                 </select>
               </div>
 
