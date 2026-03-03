@@ -462,25 +462,43 @@ function Destinations() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOption, setSortOption] = useState('recommended');
+  const [priceMax, setPriceMax] = useState(12000);
+  const [wishlist, setWishlist] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('travelWishlist')) || []; }
+    catch { return []; }
+  });
+
+  const isWishlisted = (id) => wishlist.some(w => w.id === id);
+
+  const toggleWishlist = (dest, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    let updated;
+    if (isWishlisted(dest.id)) {
+      updated = wishlist.filter(w => w.id !== dest.id);
+    } else {
+      updated = [...wishlist, { id: dest.id, title: dest.title, img: dest.img, desc: dest.desc, price: dest.price }];
+    }
+    setWishlist(updated);
+    localStorage.setItem('travelWishlist', JSON.stringify(updated));
+  };
 
   const filteredDestinations = useMemo(() => {
     let result = destinationsData.filter((dest) => {
       const matchesCategory = activeCategory === 'all' || dest.category === activeCategory;
       const lowerQuery = searchQuery.toLowerCase();
-      const matchesSearch = dest.title.toLowerCase().includes(lowerQuery) || 
+      const matchesSearch = dest.title.toLowerCase().includes(lowerQuery) ||
                             dest.desc.toLowerCase().includes(lowerQuery) ||
                             dest.category.toLowerCase().includes(lowerQuery);
-      return matchesCategory && matchesSearch;
+      const matchesPrice = dest.price <= priceMax;
+      return matchesCategory && matchesSearch && matchesPrice;
     });
 
-    if (sortOption === 'price-low') {
-      result.sort((a, b) => a.price - b.price);
-    } else if (sortOption === 'price-high') {
-      result.sort((a, b) => b.price - a.price);
-    }
+    if (sortOption === 'price-low') result.sort((a, b) => a.price - b.price);
+    else if (sortOption === 'price-high') result.sort((a, b) => b.price - a.price);
 
     return result;
-  }, [activeCategory, searchQuery, sortOption]);
+  }, [activeCategory, searchQuery, sortOption, priceMax]);
 
   return (
     <section className="portfolio section-padding" id="portfolio">
@@ -501,10 +519,10 @@ function Destinations() {
               style={{ flex: '1', background: 'transparent', border: 'none', color: 'var(--text-main)', outline: 'none' }}
             />
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(0,0,0,0.2)', padding: '5px 15px', borderRadius: '20px' }}>
-            <label style={{ marginRight: '10px', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Sort by:</label>
-            <select 
-              value={sortOption} 
+          <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(0,0,0,0.2)', padding: '5px 15px', borderRadius: '20px', gap: '8px' }}>
+            <label style={{ marginRight: '4px', fontSize: '0.9rem', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>Sort by:</label>
+            <select
+              value={sortOption}
               onChange={(e) => setSortOption(e.target.value)}
               style={{ background: 'transparent', border: 'none', color: 'var(--text-main)', outline: 'none', cursor: 'pointer' }}
             >
@@ -512,6 +530,17 @@ function Destinations() {
               <option value="price-low" style={{background: '#0f172a', color: '#fff'}}>Price: Low to High</option>
               <option value="price-high" style={{background: '#0f172a', color: '#fff'}}>Price: High to Low</option>
             </select>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(0,0,0,0.2)', padding: '5px 15px', borderRadius: '20px', gap: '10px', minWidth: '220px' }}>
+            <i className="fas fa-sliders-h" style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }} />
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>Max:</span>
+            <input
+              type="range" min="2000" max="12000" step="500"
+              value={priceMax}
+              onChange={e => setPriceMax(Number(e.target.value))}
+              style={{ flex: 1, accentColor: 'var(--primary)', cursor: 'pointer' }}
+            />
+            <span style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: '600', whiteSpace: 'nowrap' }}>₹{priceMax.toLocaleString('en-IN')}</span>
           </div>
         </div>
 
@@ -541,18 +570,33 @@ function Destinations() {
         <div className="portfolio-grid">
           {filteredDestinations.map((dest) => (
             <div className="portfolio-card fade-up" key={dest.id}>
-              <div className="img-wrapper">
+              <div className="img-wrapper" style={{ position: 'relative' }}>
                 <img src={dest.img} alt={dest.title} loading="lazy" />
                 <div className="price-tag">₹{dest.price.toLocaleString('en-IN')}/night</div>
+                {/* Wishlist heart button */}
+                <button
+                  onClick={(e) => toggleWishlist(dest, e)}
+                  style={{
+                    position: 'absolute', top: '10px', left: '10px',
+                    background: 'rgba(0,0,0,0.55)', border: 'none', borderRadius: '50%',
+                    width: '34px', height: '34px', cursor: 'pointer',
+                    color: isWishlisted(dest.id) ? '#ef4444' : 'rgba(255,255,255,0.7)',
+                    fontSize: '0.9rem', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'all 0.2s', backdropFilter: 'blur(4px)'
+                  }}
+                  title={isWishlisted(dest.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+                >
+                  <i className={isWishlisted(dest.id) ? 'fas fa-heart' : 'far fa-heart'} />
+                </button>
               </div>
               <div className="portfolio-info">
                 <div className="info-header">
                   <h3>{dest.title}</h3>
-                  <span className="rating"><i className="fas fa-star"></i> 4.9</span>
+                  <span className="rating"><i className="fas fa-star" /> 4.9</span>
                 </div>
                 <p>{dest.desc}</p>
                 <Link to={`/destination/${dest.id}`} className="explore-btn" style={{ textDecoration: 'none' }}>
-                  Book Now <i className="fas fa-chevron-right"></i>
+                  Book Now <i className="fas fa-chevron-right" />
                 </Link>
               </div>
             </div>

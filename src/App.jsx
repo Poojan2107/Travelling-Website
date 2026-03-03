@@ -12,6 +12,7 @@ import DestinationDetails from './pages/DestinationDetails';
 import ServiceDetails from './pages/ServiceDetails';
 import Success from './pages/Success';
 import MyBookings from './pages/MyBookings';
+import NotFound from './pages/NotFound';
 import LoginModal from './components/LoginModal';
 import CartDrawer from './components/CartDrawer';
 
@@ -26,6 +27,7 @@ function AnimatedRoutes() {
         <Route path="/service/:id" element={<ServiceDetails />} />
         <Route path="/checkout-success" element={<Success />} />
         <Route path="/my-bookings" element={<MyBookings />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );
