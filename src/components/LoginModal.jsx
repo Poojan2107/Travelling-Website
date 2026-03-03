@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
@@ -39,6 +40,7 @@ const InputField = ({ icon, type, placeholder, value, onChange }) => (
 
 const LoginModal = () => {
   const { isModalOpen, closeLoginModal, loginWithGoogle, loginWithEmail, signUpWithEmail } = useAuth();
+  const navigate = useNavigate();
   const [tab, setTab] = useState('signin'); // 'signin' | 'signup'
   const [loading, setLoading] = useState(false);
 
@@ -62,7 +64,11 @@ const LoginModal = () => {
 
   const handleGoogle = async () => {
     setLoading(true);
-    try { await loginWithGoogle(); reset(); }
+    try {
+      await loginWithGoogle();
+      reset();
+      navigate('/my-bookings');
+    }
     catch { toast.error('Google sign-in failed. Please try again.', { position: 'top-center' }); }
     finally { setLoading(false); }
   };
@@ -74,6 +80,7 @@ const LoginModal = () => {
       await loginWithEmail(siEmail, siPassword);
       toast.success('Welcome back! 👋', { position: 'bottom-right' });
       reset();
+      navigate('/my-bookings');
     } catch (err) {
       toast.error(FIREBASE_ERRORS[err.code] || 'Sign-in failed. Please try again.', { position: 'top-center' });
     } finally { setLoading(false); }
@@ -90,6 +97,7 @@ const LoginModal = () => {
       await signUpWithEmail(suName.trim(), suEmail, suPassword);
       toast.success(`Welcome to Traveling Tent, ${suName.split(' ')[0]}! 🎉`, { position: 'bottom-right' });
       reset();
+      navigate('/my-bookings');
     } catch (err) {
       toast.error(FIREBASE_ERRORS[err.code] || 'Sign-up failed. Please try again.', { position: 'top-center' });
     } finally { setLoading(false); }
