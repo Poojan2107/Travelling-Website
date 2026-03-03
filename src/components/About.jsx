@@ -8,7 +8,7 @@ function About() {
           <span className="subtitle">Discover</span>
           <h2>Our Story</h2>
           <p>
-            Started in 2026, Traveling Tent was born from a passion for the great outdoors. What began as a small group of enthusiasts has grown into the country's premier camping organization. We believe that nature is the ultimate reset button, and our mission is to make those wild experiences accessible, comfortable, and absolutely unforgettable.
+            Started in 2026, Traveling Tent was born from a deep analysis of modern travel frustrations. Planning a true wilderness adventure has traditionally been plagued by rigid itineraries, hidden costs, and massive safety concerns. We built this platform to solve those exact problems. By seamlessly handling verified destination curation, premium gear logistics, and instant secure bookings, our mission is to make untamed wild experiences completely accessible, endlessly comfortable, and absolutely unforgettable.
           </p>
           <div className="stats" style={{ display: 'flex', gap: '2rem', marginTop: '2rem', justifyContent: 'flex-start' }}>
             <div className="stat-item" style={{ textAlign: 'center' }}>

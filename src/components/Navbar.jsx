@@ -82,8 +82,8 @@ function Navbar() {
         
         <ul className={`all-links ${menuActive ? 'active' : ''}`} id="nav-links" style={{ alignItems: 'center' }}>
           <li><a href="#home" onClick={(e) => handleNavClick(e, '#home')}>Home</a></li>
-          <li><a href="#services" onClick={(e) => handleNavClick(e, '#services')}>Services</a></li>
           <li><a href="#portfolio" onClick={(e) => handleNavClick(e, '#portfolio')}>Destinations</a></li>
+          <li><a href="#services" onClick={(e) => handleNavClick(e, '#services')}>Services</a></li>
           <li>
             <Link to="/my-bookings" onClick={handleProtectedRouting} style={{ color: 'var(--primary)', fontWeight: 'bold' }}>
               Dashboard

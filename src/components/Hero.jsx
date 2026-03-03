@@ -9,7 +9,7 @@ function Hero() {
           Escape the ordinary. Brace yourselves for unforgettable traveling experiences and camping memories that will last a lifetime.
         </p>
         <div className="hero-btns fade-up delay-2">
-          <a href="#services" className="btn btn-primary">Explore Services <i className="fas fa-arrow-right"></i></a>
+          <a href="#portfolio" className="btn btn-primary" style={{ transition: 'all 0.3s ease-in-out', transform: 'scale(1)' }}>Explore Destinations <i className="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </section>
