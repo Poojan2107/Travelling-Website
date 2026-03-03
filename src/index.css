@@ -59,6 +59,7 @@ h1, h2, h3, h4, .logo {
 .gradient-text {
   background: var(--gradient);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
